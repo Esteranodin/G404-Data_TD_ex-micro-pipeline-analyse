@@ -1,0 +1,4 @@
+colonne,nombre_lignes,cellules_vides,valeurs_distinctes_non_vides,type_detecte
+ticket_id,1800,0,1799,string
+channel,1800,0,4,string
+resolution_minutes,1800,0,979,string
