@@ -1,0 +1,4 @@
+channel,seuil_minutes,nombre_queue,effectif_groupe,frequence_queue
+email,180,61,600,0.10166666666666667
+phone,180,0,599,0.0
+chat,180,22,600,0.03666666666666667

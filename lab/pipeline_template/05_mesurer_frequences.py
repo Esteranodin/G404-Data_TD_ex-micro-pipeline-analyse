@@ -15,13 +15,28 @@ def calculer_frequences_queue(tickets_nettoyes):
 
     Colonnes : channel, seuil_minutes, nombre_queue,
     effectif_groupe, frequence_queue.
-
-    À FAIRE : compter les tickets à 180 minutes ou plus dans un canal, puis
-    diviser par l'effectif analysable de ce même canal. Répéter par canal.
-    frequence_queue est une proportion entre 0 et 1.
-    Aide : section 9 de ../PYTHON_SNIPPETS.md.
     """
-    raise NotImplementedError("À FAIRE : calculer les fréquences par canal.")
+    lignes_frequences = []
+
+    for canal in tickets_nettoyes["channel"].unique():
+        appartient_au_canal = tickets_nettoyes["channel"] == canal
+        canaux = tickets_nettoyes.loc[appartient_au_canal]
+        atteint_seuil = canaux["resolution_minutes"] >= SEUIL_QUEUE_MINUTES
+
+        nombre_queue = int(atteint_seuil.sum())
+        effectif_canal = len(canaux)
+        frequence_queue = nombre_queue / effectif_canal
+
+        ligne = {
+            "channel": canal,
+            "seuil_minutes": SEUIL_QUEUE_MINUTES,
+            "nombre_queue": nombre_queue,
+            "effectif_groupe": effectif_canal,
+            "frequence_queue": frequence_queue,
+        }
+        lignes_frequences.append(ligne)
+
+    return pd.DataFrame(lignes_frequences)
 
 
 def main():
@@ -35,6 +50,29 @@ def main():
     tickets_nettoyes = pd.read_csv(CSV_NETTOYE)
     frequences = calculer_frequences_queue(tickets_nettoyes)
 
+
+    # --- Contrôles ---
+    assert frequences["effectif_groupe"].sum() == len(tickets_nettoyes)
+    assert (frequences["nombre_queue"] >= 0).all()
+    assert (
+        frequences["nombre_queue"] <= frequences["effectif_groupe"]
+    ).all()
+    assert frequences["frequence_queue"].between(0, 1).all()
+
+    # Vérification indépendante : recompter à la main, par un autre chemin,
+    # pour un canal choisi.
+    frequence_email = frequences.loc[
+        frequences["channel"] == "email", "frequence_queue"
+    ].iloc[0]
+    nombre_email_independant = (
+        tickets_nettoyes.loc[
+            tickets_nettoyes["channel"] == "email", "resolution_minutes"
+        ] >= SEUIL_QUEUE_MINUTES
+    ).sum()
+    effectif_email_independant = (tickets_nettoyes["channel"] == "email").sum()
+    assert frequence_email == nombre_email_independant / effectif_email_independant
+
+    print("Contrôles réussis pour les fréquences de queue.")
     creer_dossiers_sortie()
     frequences.to_csv(CSV_FREQUENCES, index=False)
     print(f"Seuil : {SEUIL_QUEUE_MINUTES} minutes")
