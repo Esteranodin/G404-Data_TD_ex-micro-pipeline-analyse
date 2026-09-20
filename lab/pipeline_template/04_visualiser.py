@@ -36,15 +36,6 @@ def calculer_kde(valeurs, grille):
 
 def ecrire_graphiques(tickets_nettoyes):
     """Écrire deux graphiques HTML utilisables hors connexion.
-
-    À FAIRE :
-
-    - ajouter un trait par observation sous chaque histogramme (rug) ;
-
-
-    Facultatif après les histogrammes : une vue séparée avec densité estimée (KDE).
-    Utiliser histnorm="probability density" pour comparer histogramme et KDE.
-    ff.create_distplot, utilisé au cours précédent, ne fonctionne plus en 7.
     """
     canaux = tickets_nettoyes["channel"].unique()
 

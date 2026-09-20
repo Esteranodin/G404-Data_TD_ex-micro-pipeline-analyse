@@ -1,4 +1,4 @@
 ligne_source,ticket_id,regle,decision,justification
-920,TKT-0668,duree_negative,corrigee,Valeur négative interprétée comme une erreur de saisie : -25.0 devient 25.0.
-538,TKT-1238,uniformisation casse,corrigee,Le canal «  Email  » est normalisée en « email ».
-1446,TKT-0099,identifiant_duplique,exclue,Deuxième occurrence du ticket ; première occurrence conservée
+538,TKT-1238,modalite_channel,corrigee,Le canal «  Email  » est normalisé en « email ».
+920,TKT-0668,duree_negative,corrigee,-25.0 est corrigée en 25.0.
+1446,TKT-0099,identifiant_duplique,exclue,Deuxième occurrence du ticket ; première occurrence conservée.
