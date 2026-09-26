@@ -6,13 +6,13 @@ de référence sera présenté vendredi matin pour comparer les approches.
 
 ## Commencer ici
 
-1. Lire la mission et le dictionnaire dans [PROJECT_BRIEF.md](PROJECT_BRIEF.md).
+1. Lire la mission et le dictionnaire dans [PROJECT_BRIEF.md](./lab/PROJECT_BRIEF.md).
 2. Ouvrir `data/raw/tickets_support.csv` sans le modifier.
 3. Exécuter `pipeline_template/01_auditer.py` puis inspecter son tableau de sortie.
-4. Compléter une étape à la fois en suivant [pipeline_template/README.md](pipeline_template/README.md).
-5. Rédiger l'interprétation avec [REPORT_TEMPLATE.md](REPORT_TEMPLATE.md).
+4. Compléter une étape à la fois en suivant [pipeline_template/README.md](./lab/pipeline_template/README.md).
+5. Rédiger l'interprétation avec [REPORT_TEMPLATE.md](./lab/REPORT_TEMPLATE.md).
 
-La fiche [Python — points de départ](PYTHON_SNIPPETS.md) contient du code simple
+La fiche [Python — points de départ](./lab/PYTHON_SNIPPETS.md) contient du code simple
 et commenté sur de petites données de visites. Choisissez les exemples utiles,
 expliquez-les, puis adaptez-les aux tickets.
 
@@ -40,18 +40,6 @@ et des fonctions à compléter. Lorsque chaque étape fonctionne, utilisez
 
 Le dossier `pipeline_template/` est le point de départ du jeudi. La version
 complète sera distribuée séparément vendredi matin.
-
-## Organisation du jeudi
-
-- **Lancement collectif** : rappeler les principes, lire la mission et essayer
-  les points de départ.
-- **Matinée individuelle** : auditer, justifier les décisions de qualité,
-  préparer les données et commencer les résumés.
-- **Après-midi individuelle** : compléter les résumés, figures et fréquences,
-  vérifier le pipeline et écrire une conclusion argumentée.
-
-Gardez une trace de ce que vous avez compris, de vos choix et de ce qui reste
-incertain. Les checkpoints servent à expliquer votre raisonnement.
 
 ## Environnement
 
